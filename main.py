@@ -10,8 +10,8 @@ import redis
 
 def main():
     
-    cat_var = st.selectbox('Categorical Variable', ('option1', 'option2', 'option3'))
-    scal_var = st.number_input("Scalar Variable", min_value=0)
+    booking_link = st.selectbox('Categorical Variable', ('Chicago', 'LA', 'Tuscaloosa'))
+    name = st.selectbox('Lead Name', ('Joe', 'Susan', 'Mo'))
     
     redis_host = os.environ.get("REDIS_1_HOST")
     redis_port = 25061
@@ -19,7 +19,7 @@ def main():
     rd = redis.Redis(host=redis_host, port=redis_port, password=redis_password, ssl=True, ssl_ca_certs="/etc/ssl/certs/ca-certificates.crt")
 
     system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
-    system_prompt = system_prompt.format(var1 = cat_var, var2 = scal_var)
+    system_prompt = system_prompt.format(location=location, sqft=sqft, name=name)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
     initial_text = initial_text.format(name=name)
