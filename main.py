@@ -9,9 +9,11 @@ import redis
 
 
 def main():
-    
-    booking_link = st.selectbox('Categorical Variable', ('Chicago', 'LA', 'Tuscaloosa'))
+
+    st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
+    location = st.('Location', ('Chicago', 'LA', 'Tuscaloosa'))
     name = st.selectbox('Lead Name', ('Joe', 'Susan', 'Mo'))
+    booking_link = 'bookinglink.com/' + location
     
     redis_host = os.environ.get("REDIS_1_HOST")
     redis_port = 25061
