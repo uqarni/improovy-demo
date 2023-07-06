@@ -10,6 +10,10 @@ import redis
 
 def main():
 
+    # Create a title for the chat interface
+    st.title("Improovy Bot")
+    st.write("This bot is still in alpha. To test, first click the button below.")
+
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
     location = st.selectbox('Location', ('Chicago', 'LA', 'Tuscaloosa'))
     name = st.selectbox('Lead Name', ('Joe', 'Susan', 'Mo'))
@@ -25,9 +29,7 @@ def main():
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
     initial_text = initial_text.format(name=name)
-    # Create a title for the chat interface
-    st.title("Improovy Bot")
-    st.write("This bot is still in alpha. To test, first click the button below.")
+
     
     if st.button('Click to Start or Restart'):
         st.write(initial_text)
