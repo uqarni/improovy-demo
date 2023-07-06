@@ -19,7 +19,7 @@ def main():
     rd = redis.Redis(host=redis_host, port=redis_port, password=redis_password, ssl=True, ssl_ca_certs="/etc/ssl/certs/ca-certificates.crt")
 
     system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
-    system_prompt = system_prompt.format(location=location, sqft=sqft, name=name)
+    system_prompt = system_prompt.format(booking_link=booking_link, name=name)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
     initial_text = initial_text.format(name=name)
