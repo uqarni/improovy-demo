@@ -11,7 +11,7 @@ import redis
 def main():
 
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
-    location = st.slectbox('Location', ('Chicago', 'LA', 'Tuscaloosa'))
+    location = st.selectbox('Location', ('Chicago', 'LA', 'Tuscaloosa'))
     name = st.selectbox('Lead Name', ('Joe', 'Susan', 'Mo'))
     booking_link = 'bookinglink.com/' + location
     
