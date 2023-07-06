@@ -12,7 +12,7 @@ def main():
 
     # Create a title for the chat interface
     st.title("Improovy Bot")
-    st.write("This bot is still in alpha. To test, first click the button below.")
+    st.write("This bot is still in alpha. To test, first select some fields then click the button below.")
 
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
     location = st.selectbox('Location', ('Chicago', 'LA', 'Tuscaloosa'))
