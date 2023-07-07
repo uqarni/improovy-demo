@@ -22,13 +22,13 @@ def main():
     booking_link = 'bookinglink.com/' 
     description = st.text_input("add project description here")
     address = st.text_input("type in address")
-    if name is None:
+    if name is None or name == "":
         name = 'unknown'
-    if lead_name is None: 
+    if lead_name is None or lead_name == "": 
         lead_name = 'unknown'
-    if description is None:
+    if description is None or description == "":
         description = 'unknown'
-    if address is None:
+    if address is None or address == "":
         address = 'unknown'
         
     redis_host = os.environ.get("REDIS_1_HOST")
