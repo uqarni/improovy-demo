@@ -15,17 +15,29 @@ def main():
     st.write("This bot is still in alpha. To test, first select some fields then click the button below.")
 
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
-    location = st.selectbox('Location', ('Chicago', 'LA', 'Tuscaloosa'))
-    name = st.selectbox('Lead Name', ('Joe', 'Susan', 'Mo'))
-    booking_link = 'bookinglink.com/' + location
     
+    #variables for system prompt
+    name = st.selectbox('Seller Name', ('Joe', 'Susan', 'Mo'))
+    lead_name = st.text_input("What is your name")
+    booking_link = 'bookinglink.com/' 
+    description = st.text_input("add project description here")
+    address = st.text_input("type in address")
+    if name is None:
+        name = 'unknown'
+    if lead_name is None: 
+        lead_name = 'unknown'
+    if description is None:
+        description = 'unknown'
+    if address is None:
+        address = 'unknown'
+        
     redis_host = os.environ.get("REDIS_1_HOST")
     redis_port = 25061
     redis_password = os.environ.get("REDIS_1_PASSWORD")
     rd = redis.Redis(host=redis_host, port=redis_port, password=redis_password, ssl=True, ssl_ca_certs="/etc/ssl/certs/ca-certificates.crt")
 
     system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
-    system_prompt = system_prompt.format(booking_link=booking_link, name=name)
+    system_prompt = system_prompt.format(name = name, lead_name = lead_name, description = description, address = address)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
     initial_text = initial_text.format(name=name)
