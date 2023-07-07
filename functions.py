@@ -23,21 +23,29 @@ def ideator(messages):
       # Strip leading and trailing whitespace from each sentence
       sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
   
-      # Initialize part1 and part2 as empty lists
-      part1 = []
-      part2 = []
-  
-      # For each sentence, add it to the part which currently has the shortest total length
+      # Compute the cumulative length of all sentences
+      cum_length = [0]
       for sentence in sentences:
-          if sum(len(s) for s in part1) <= sum(len(s) for s in part2):
-              part1.append(sentence)
-          else:
-              part2.append(sentence)
+          cum_length.append(cum_length[-1] + len(sentence))
+      
+      total_length = cum_length[-1]
   
-      # Join the sentences in each part back into strings
-      strings = [" ".join(part1), " ".join(part2)]
+      # Find the splitting point
+      split_point = next(i for i, cum_len in enumerate(cum_length) if cum_len >= total_length / 2)
+  
+      # Split the sentences into two parts at the splitting point
+      part1 = sentences[:split_point]
+      part2 = sentences[split_point:]
+  
+      # Join the sentences in each part back into strings and exclude any part that is empty
+      strings = []
+      if part1:
+          strings.append(" ".join(part1))
+      if part2:
+          strings.append(" ".join(part2))
       
       return strings
+
 
 
 
