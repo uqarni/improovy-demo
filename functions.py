@@ -15,35 +15,35 @@ def ideator(messages):
   )
   response = result["choices"][0]["message"]["content"]
   
-def split_sms(message):
-    import re
-
-    # Use regular expressions to split the string at ., !, or ? followed by a space or newline
-    sentences = re.split('(?<=[.!?]) (?=\\S)|(?<=[.!?])\n', message.strip())
-    # Strip leading and trailing whitespace from each sentence
-    sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
-
-    # Compute the total length of all sentences
-    total_length = sum(len(sentence) for sentence in sentences)
-
-    # Split the sentences into two parts such that the difference in their total lengths is minimized
-    part1 = sentences.copy()  # Start with all sentences in part1
-    part2 = []
-
-    while len(part1) > 1 and sum(len(sentence) for sentence in part1) > total_length / 2:
-        # Move the last sentence from part1 to the beginning of part2
-        part2.insert(0, part1.pop())
-
-    # If part2 is still empty after the loop, split the sentences equally
-    if not part2:
-        half = len(sentences) // 2
-        part1 = sentences[:half]
-        part2 = sentences[half:]
-
-    # Join the sentences in each part back into strings
-    strings = [" ".join(part1), " ".join(part2)]
-    
-    return strings
+  def split_sms(message):
+      import re
+  
+      # Use regular expressions to split the string at ., !, or ? followed by a space or newline
+      sentences = re.split('(?<=[.!?]) (?=\\S)|(?<=[.!?])\n', message.strip())
+      # Strip leading and trailing whitespace from each sentence
+      sentences = [sentence.strip() for sentence in sentences if sentence.strip()]
+  
+      # Compute the total length of all sentences
+      total_length = sum(len(sentence) for sentence in sentences)
+  
+      # Split the sentences into two parts such that the difference in their total lengths is minimized
+      part1 = sentences.copy()  # Start with all sentences in part1
+      part2 = []
+  
+      while len(part1) > 1 and sum(len(sentence) for sentence in part1) > total_length / 2:
+          # Move the last sentence from part1 to the beginning of part2
+          part2.insert(0, part1.pop())
+  
+      # If part2 is still empty after the loop, split the sentences equally
+      if not part2:
+          half = len(sentences) // 2
+          part1 = sentences[:half]
+          part2 = sentences[half:]
+  
+      # Join the sentences in each part back into strings
+      strings = [" ".join(part1), " ".join(part2)]
+      
+      return strings
 
 
 
