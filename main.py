@@ -40,7 +40,7 @@ def main():
     system_prompt = system_prompt.format(name = name, lead_name = lead_name, description = description, address = address, booking_link = booking_link)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
-    initial_text = initial_text.format(name=name)
+    initial_text = initial_text.format(name = name, lead_name = lead_name, description = description, address = address, booking_link = booking_link)
 
     
     if st.button('Click to Start or Restart'):
