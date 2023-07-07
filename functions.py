@@ -30,7 +30,7 @@ def ideator(messages):
       part1 = sentences.copy()  # Start with all sentences in part1
       part2 = []
   
-      while sum(len(sentence) for sentence in part1) > total_length / 2:
+      while len(part1) > 1 and sum(len(sentence) for sentence in part1) > total_length / 2:
           # Move the last sentence from part1 to the beginning of part2
           part2.insert(0, part1.pop())
   
@@ -38,6 +38,7 @@ def ideator(messages):
       strings = [" ".join(part1), " ".join(part2)]
       
       return strings
+
 
   
   split_response = split_sms(response)
