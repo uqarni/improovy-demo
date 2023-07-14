@@ -19,7 +19,7 @@ def main():
     #variables for system prompt
     name = st.selectbox('Seller Name', ('Joe', 'Susan', 'Mo'))
     lead_name = st.text_input("What is your name")
-    booking_link = 'bookinglink.com/' 
+    booking_link = 'https://calendly.com/d/y7c-t9v-tnj/15-minute-meeting-with-improovy-painting-expert'
     description = st.text_input("add project description here")
     address = st.text_input("type in address")
     if name is None or name == "":
