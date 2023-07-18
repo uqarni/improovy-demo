@@ -25,7 +25,7 @@ def main():
     #from contact
     lead_full_name = "John Doe"
     email = "johndoe@gmail.com"
-    address=data_dict.get('address', 'unknown')
+    address=st.text_input('enter address')
     
     #from deal
     status='open'
