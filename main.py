@@ -17,19 +17,33 @@ def main():
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
     
     #variables for system prompt
-    name = st.selectbox('Seller Name', ('Joe', 'Susan', 'Mo'))
-    lead_name = st.text_input("What is your name")
+    name = 'Phil'
     booking_link = 'https://calendly.com/d/y7c-t9v-tnj/15-minute-meeting-with-improovy-painting-expert'
-    description = st.text_input("add project description here")
-    address = st.text_input("type in address")
-    if name is None or name == "":
-        name = 'unknown'
-    if lead_name is None or lead_name == "": 
-        lead_name = 'unknown'
-    if description is None or description == "":
-        description = 'unknown'
-    if address is None or address == "":
-        address = 'unknown'
+    initial_description = st.text_input("add project description here")
+    sqft = st.text_input("add sqft here")
+    color = st.text_input('desired color')
+    #from contact
+    lead_full_name = "John Doe"
+    email = "johndoe@gmail.com"
+    address=data_dict.get('address', 'unknown')
+    
+    #from deal
+    status='open'
+    stage='uncontacted lead'
+
+    timeline='1-2 weeks'
+    spreadsheet='spreadsheet.com/sheet'
+    zipcode='60614'
+    interior_surfaces = 'unknown'
+    interior_wall_height = 'unknown'
+    exterior_surfaces = 'unknown'
+    exterior_wall_height = 'unknown'
+    
+    #from booking
+    resched_link='none'
+    cancel_link='none'
+    meeting_booked='none'
+    meeting_time='none'
         
     redis_host = os.environ.get("REDIS_1_HOST")
     redis_port = 25061
@@ -37,10 +51,13 @@ def main():
     rd = redis.Redis(host=redis_host, port=redis_port, password=redis_password, ssl=True, ssl_ca_certs="/etc/ssl/certs/ca-certificates.crt")
 
     system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
-    system_prompt = system_prompt.format(name = name, lead_name = lead_name, description = description, address = address, booking_link = booking_link)
+    system_prompt = system_prompt.format(name = name, booking_link = booking_link, initial_description = initial_description, sqft = sqft, color = color, lead_full_name = lead_full_name, email = email,
+                                         addres = address, status = status, stage = stage, timeline = timeline, spreadsheet = spreadsheet, zipcode = zipcode, interior_surfaces = interior_surfaces,
+                                         interior_wall_height = interior_wall_height, exterior_surfaces = exterior_surfaces, exterior_wall_height = exterior_wall_height, resched_link = resched_link,
+                                         cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
-    initial_text = initial_text.format(name = name, lead_name = lead_name, description = description, address = address, booking_link = booking_link)
+    initial_text = initial_text.format(name = name, lead_name = lead_full_name, description = description, address = address, booking_link = booking_link)
 
     
     if st.button('Click to Start or Restart'):
