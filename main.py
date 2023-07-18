@@ -26,7 +26,7 @@ def main():
     lead_full_name = "John Doe"
     email = "johndoe@gmail.com"
     address=st.text_input('enter address')
-    
+    additional_notes = 'n/a'
     #from deal
     status='open'
     stage='uncontacted lead'
@@ -54,7 +54,7 @@ def main():
     system_prompt = system_prompt.format(name = name, booking_link = booking_link, initial_description = initial_description, sqft = sqft, color = color, lead_full_name = lead_full_name, email = email,
                                          addres = address, status = status, stage = stage, timeline = timeline, spreadsheet = spreadsheet, zipcode = zipcode, interior_surfaces = interior_surfaces,
                                          interior_wall_height = interior_wall_height, exterior_surfaces = exterior_surfaces, exterior_wall_height = exterior_wall_height, resched_link = resched_link,
-                                         cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time)
+                                         cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time, additional_notes = additional_notes)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
     initial_text = initial_text.format(name = name, lead_name = lead_full_name, description = description, address = address, booking_link = booking_link)
