@@ -57,7 +57,7 @@ def main():
                                          cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time, additional_notes = additional_notes)
 
     initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
-    initial_text = initial_text.format(name = name, lead_name = lead_full_name, description = initial_description, address = address, booking_link = booking_link)
+    initial_text = initial_text.format(name = name, lead_full_name = lead_full_name, description = initial_description, address = address, booking_link = booking_link)
 
     
     if st.button('Click to Start or Restart'):
