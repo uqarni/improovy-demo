@@ -52,7 +52,7 @@ def main():
 
     system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
     system_prompt = system_prompt.format(name = name, booking_link = booking_link, initial_description = initial_description, sqft = sqft, color = color, lead_full_name = lead_full_name, email = email,
-                                         addres = address, status = status, stage = stage, timeline = timeline, spreadsheet = spreadsheet, zipcode = zipcode, interior_surfaces = interior_surfaces,
+                                         address = address, status = status, stage = stage, timeline = timeline, spreadsheet = spreadsheet, zipcode = zipcode, interior_surfaces = interior_surfaces,
                                          interior_wall_height = interior_wall_height, exterior_surfaces = exterior_surfaces, exterior_wall_height = exterior_wall_height, resched_link = resched_link,
                                          cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time, additional_notes = additional_notes)
 
