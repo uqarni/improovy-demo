@@ -4,9 +4,15 @@ import json
 import os
 import sys
 from datetime import datetime
-import redis
+import supabase
 
+#connect to supabase database
+urL: str = os.environ.get("SUPABASE_URL")
+key: str = os.environ.get("SUPABASE_KEY")
 
+supabase: Client = create_client(urL, key)
+data, count = supabase.table("bots").select("*").eq("id", "mike").execute()
+bot_info = data[1][0]
 
 def main():
 
@@ -17,7 +23,7 @@ def main():
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
     
     #variables for system prompt
-    name = 'Phil'
+    name = 'Mike'
     booking_link = 'https://calendly.com/d/y7c-t9v-tnj/15-minute-meeting-with-improovy-painting-expert'
     initial_description = st.text_input("add project description here")
     sqft = st.text_input("add sqft here")
@@ -44,20 +50,15 @@ def main():
     cancel_link='none'
     meeting_booked='none'
     meeting_time='none'
-        
-    redis_host = os.environ.get("REDIS_1_HOST")
-    redis_port = 25061
-    redis_password = os.environ.get("REDIS_1_PASSWORD")
-    rd = redis.Redis(host=redis_host, port=redis_port, password=redis_password, ssl=True, ssl_ca_certs="/etc/ssl/certs/ca-certificates.crt")
 
-    system_prompt = rd.get("carr@improovy.com-systemprompt-01").decode('utf-8')
+    system_prompt = bot_info['system_prompt']
     system_prompt = system_prompt.format(name = name, booking_link = booking_link, initial_description = initial_description, sqft = sqft, color = color, lead_full_name = lead_full_name, email = email,
                                          address = address, status = status, stage = stage, timeline = timeline, spreadsheet = spreadsheet, zipcode = zipcode, interior_surfaces = interior_surfaces,
                                          interior_wall_height = interior_wall_height, exterior_surfaces = exterior_surfaces, exterior_wall_height = exterior_wall_height, resched_link = resched_link,
                                          cancel_link = cancel_link, meeting_booked = meeting_booked, meeting_time = meeting_time, additional_notes = additional_notes)
 
-    initial_text = rd.get("carr@improovy.com-initialtext-01").decode('utf-8')
-    initial_text = initial_text.format(name = name, lead_full_name = lead_full_name, description = initial_description, address = address, booking_link = booking_link)
+    initial_text = bot_info['initial_text']
+    initial_text = initial_text.format(name = name, first_name = lead_full_name, description = initial_description, address = address, booking_link = booking_link)
 
     
     if st.button('Click to Start or Restart'):
