@@ -4,7 +4,7 @@ import json
 import os
 import sys
 from datetime import datetime
-import supabase
+from supabase import create_client, Client
 
 #connect to supabase database
 urL: str = os.environ.get("SUPABASE_URL")
