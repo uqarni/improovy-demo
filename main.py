@@ -39,7 +39,7 @@ def main():
 
     timeline='1-2 weeks'
     spreadsheet='spreadsheet.com/sheet'
-    zipcode='60614'
+    zipcode= st.text_input('zip code', value = 'unknown')
     interior_surfaces = 'unknown'
     interior_wall_height = 'unknown'
     exterior_surfaces = 'unknown'
