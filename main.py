@@ -26,8 +26,7 @@ def main():
     name = 'Mike'
     booking_link = 'https://calendly.com/d/y7c-t9v-tnj/15-minute-meeting-with-improovy-painting-expert'
     initial_description = st.text_input("add project description here")
-    sqft = st.text_input("add sqft here")
-    color = st.text_input('desired color')
+
     #from contact
     lead_full_name = "John Doe"
     email = "johndoe@gmail.com"
