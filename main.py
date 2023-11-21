@@ -18,15 +18,8 @@ def main():
 
     # Create a title for the chat interface
     st.title("Improovy Bot")
-    st.write("This is a testing website to play around with Mike’s conversational examples. The following script is going to be used for responding to customers who left a voicemail, or customers who fill out a form after hours or the weekend. Mike’s explicit goal is to have an organic conversation with them and schedule a call with an Improovy team member. Mike will be turned off during business hours to allow for the sales team to contact the prospects directly. 
-")
-    st.write("The fields below mirror what people fill out on the onboarding form. Please have conversations directly with Mike as if you are a prospect, and add your feedback to the examples on this google doc.
-
-https://docs.google.com/document/d/1g1oo1O7LW4gTlLx-F8PVJD3FJ6I2zLUhzbAoJD4g6V8/edit
-
-Here’s a loom video that outlines the instructions on how to add your feedback.
-
-https://www.loom.com/share/9d3f96be9ad142b28fed237b089f473c?sid=29b669d9-4181-4bab-96af-9a30dfbdde1a")
+    st.write("This is a testing website to play around with Mike’s conversational examples. The following script is going to be used for responding to customers who left a voicemail, or customers who fill out a form after hours or the weekend. Mike’s explicit goal is to have an organic conversation with them and schedule a call with an Improovy team member. Mike will be turned off during business hours to allow for the sales team to contact the prospects directly.")
+    st.write("The fields below mirror what people fill out on the onboarding form. Please have conversations directly with Mike as if you are a prospect, and add your feedback to the examples on this google doc.\n\nhttps://docs.google.com/document/d/1g1oo1O7LW4gTlLx-F8PVJD3FJ6I2zLUhzbAoJD4g6V8/edit\n\nHere’s a loom video that outlines the instructions on how to add your feedback.\n\nhttps://www.loom.com/share/9d3f96be9ad142b28fed237b089f473c?sid=29b669d9-4181-4bab-96af-9a30dfbdde1a")
 
     st.write("These are standin variables to demonstrate the bot's ability to integrate variables into its instruction set.")
     
