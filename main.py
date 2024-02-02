@@ -23,7 +23,7 @@ Zip Code: 33611
 
 ### Sidebar
 st.sidebar.title("Inputs")
-st.write('modify these then press Start/Restart on the right')
+st.sidebar.write('modify these then press Start/Restart on the right')
 lead_name = st.sidebar.text_input("Lead First Name", value = "Susan")
 loc = st.sidebar.text_input("Location", value = "Tampa, FL")
 pd = st.sidebar.text_area("Project Description", value = default_project_value, height = 500)
