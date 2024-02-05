@@ -27,9 +27,9 @@ st.sidebar.write('modify these then press Start/Restart on the right')
 lead_name = st.sidebar.text_input("Lead First Name", value = "Susan")
 loc = st.sidebar.text_input("Location", value = "Tampa, FL")
 pd = st.sidebar.text_area("Project Description", value = default_project_value, height = 300)
-temp = st.sidebar.slider("Temperature", min_value = 0.0, max_value = 1.0, value = 0.0, step = 0.1)
-model = st.sidebar.selectbox("Model", ["gpt-4-1106-preview", "gpt-3.5-turbo"])
-max_tokens = st.sidebar.slider("Max Tokens", min_value = 50, max_value = 500, value = 200, step = 50)
+temp = 0#st.sidebar.slider("Temperature", min_value = 0.0, max_value = 1.0, value = 0.0, step = 0.1)
+model = "gpt-4-1106-preview"#st.sidebar.selectbox("Model", ["gpt-4-1106-preview", "gpt-3.5-turbo"])
+max_tokens = 200#st.sidebar.slider("Max Tokens", min_value = 50, max_value = 500, value = 200, step = 50)
 ####Main Bar
     
 
