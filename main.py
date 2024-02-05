@@ -35,7 +35,7 @@ max_tokens = 200#st.sidebar.slider("Max Tokens", min_value = 50, max_value = 500
 
 client = OpenAI()
 
-st.title("AI Mike Chatbot")
+st.title("AI Thomas Chatbot")
 
 if st.button("Start/Restart"):
     #clear all session state
