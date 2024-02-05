@@ -70,7 +70,7 @@ def generate_responses(session_state):
   key = os.environ.get("OPENAI_API_KEY")
   openai.api_key = key
 
-  response = openai.chat.completions.create(model=session_state.model, messages=[system_prompt , *messages], max_tokens=session_state.max_tokens)
+  response = openai.chat.completions.create(model=session_state.model, messages=[system_prompt , *messages], max_tokens=session_state.max_tokens, temperature = session_state.temp)
   response = response.choices[0].message.content
   split_response = split_sms(response)
   for section in split_response:
